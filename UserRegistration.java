@@ -1,26 +1,32 @@
-package com.bridgelabz.regex;
+package com.bridgelabz;
+
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
- * Purpose  - As a User need to enter a valid Last Name
- * Purpose  - As a User need to enter a valid E-mail ID
- * @author  - Utkarsh Mishra
- * @version - 16.0
- * @since   - 2021-09-29
-@@ -18,13 +18,17 @@ public static void main(String[] args) {
+ * Purpose  - As a User need to enter a valid Email Address
+ * Purpose  - As a User need to enter a mobile number in a pre-defined format.
+ */
+
+public class UserRegistration {
+@@ -57,4 +57,20 @@ public static void validEmailId(){
+        else
+            System.out.println("Email Address is Invalid");
+    }
+    /*
+     Created a method to validate Mobile Number
+     */
+    public static void validMobileNumber(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter 1 : to validate First Name ");
-        System.out.println("Enter 2 : to validate Last Name ");
-        System.out.println("Enter 3 : to validate E-mail Address ");
-        switch (scanner.nextInt()){
-            case 1:
-                UserRegistration.validFirstName();
-                break;
-            case 2:
-                UserRegistration.validLastName();
-                break;
-            case 3:
-                UserRegistration.validEmailId();
-                break;
-            default:
-                System.out.println("Select a valid number");
-        }
+        System.out.print("Enter your mobile number : ");
+        String phoneNo = scanner.nextLine();
+        String regex3 = "^[0-9]{2}\\s{0,1}[0-9]{10}$";
+        Pattern p3 = Pattern.compile(regex3);
+        Matcher m3 = p3.matcher(phoneNo);
+        boolean r3 = m3.matches();
+        if (r3)
+            System.out.println("Phone number is Valid");
+        else
+            System.out.println("Phone number is Invalid");
+    }
+}
